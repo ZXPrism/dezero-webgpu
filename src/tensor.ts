@@ -1,4 +1,4 @@
-type NDArray = number | NDArray[];
+export type NDArray = number | NDArray[];
 
 export class Tensor {
     public data: NDArray;

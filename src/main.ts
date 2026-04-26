@@ -1,4 +1,4 @@
-import { Tensor } from "./tensor";
+import { dezero } from "./dezero";
 import "./style.css";
 
 
@@ -40,7 +40,7 @@ window.addEventListener("unhandledrejection", (event) => {
 // Main initialization
 async function main() {
     try {
-        const x = new Tensor([1.0, [2.0, 4.0]]);
+        const x = dezero.tensor([1.0, [2.0, 4.0]]);
         console.log(x);
     } catch (error) {
         display_error(
