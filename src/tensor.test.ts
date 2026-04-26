@@ -4,47 +4,47 @@ import { Tensor } from "./tensor";
 
 describe("Tensor Validtion", () => {
     it("should not create an empty tensor 1", () => {
-        expect(() => { const _ = new Tensor([]); }).toThrow();
+        expect(() => { new Tensor([]); }).toThrow();
     });
 
     it("should not create an empty tensor 2", () => {
-        expect(() => { const _ = new Tensor([[]]); }).toThrow();
+        expect(() => { new Tensor([[]]); }).toThrow();
     });
 
     it("should not create an empty tensor 3", () => {
-        expect(() => { const _ = new Tensor([[], []]); }).toThrow();
+        expect(() => { new Tensor([[], []]); }).toThrow();
     });
 
     it("should create a valid tensor (0d)", () => {
-        expect(() => { const _ = new Tensor(1.14514); }).not.toThrow();
+        expect(() => { new Tensor(1.14514); }).not.toThrow();
     });
 
     it("should create a valid tensor (2x2 array)", () => {
-        expect(() => { const _ = new Tensor([[1.0, 4.0], [2.0, 3.0]]); }).not.toThrow();
+        expect(() => { new Tensor([[1.0, 4.0], [2.0, 3.0]]); }).not.toThrow();
     });
 
     it("should create a valid tensor (3x2 array)", () => {
-        expect(() => { const _ = new Tensor([[1.0, 4.0], [2.0, 3.0], [6.0, 7.0]]); }).not.toThrow();
+        expect(() => { new Tensor([[1.0, 4.0], [2.0, 3.0], [6.0, 7.0]]); }).not.toThrow();
     });
 
     it("should create a valid tensor (2x1x1 array)", () => {
-        expect(() => { const _ = new Tensor([[[1.0]], [[1.0]]]); }).not.toThrow();
+        expect(() => { new Tensor([[[1.0]], [[1.0]]]); }).not.toThrow();
     });
 
     it("should not create an invalid tensor (invalid shape) 1", () => {
-        expect(() => { const _ = new Tensor([[1.0, 2.0], 3.0]); }).toThrow();
+        expect(() => { new Tensor([[1.0, 2.0], 3.0]); }).toThrow();
     });
 
     it("should not create an invalid tensor (invalid shape) 2", () => {
-        expect(() => { const _ = new Tensor([[1.0], [[6.0]]]); }).toThrow();
+        expect(() => { new Tensor([[1.0], [[6.0]]]); }).toThrow();
     });
 
     it("should not create an invalid tensor (invalid shape) 3", () => {
-        expect(() => { const _ = new Tensor([[1.0, 5.0], [[6.0]]]); }).toThrow();
+        expect(() => { new Tensor([[1.0, 5.0], [[6.0]]]); }).toThrow();
     });
 
     it("should not create an invalid tensor (invalid shape) 4", () => {
-        expect(() => { const _ = new Tensor([[1.0, [2.0]]]); }).toThrow();
+        expect(() => { new Tensor([[1.0, [2.0]]]); }).toThrow();
     });
 });
 
