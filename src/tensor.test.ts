@@ -53,7 +53,7 @@ describe("Tensor Shapes", () => {
         expect(new Tensor(1.0).shape).toEqual([]);
     });
 
-    it("should compute the correct shape of 1D tensor", () => {
+    it("should compute the correct shape of 1D(6) tensor", () => {
         expect(new Tensor([1, 2, 3, 4, 5, 6]).shape).toEqual([6]);
     });
 
@@ -79,7 +79,7 @@ describe("Tensor Dimensions", () => {
         expect(new Tensor(1.0).ndim).toEqual(0);
     });
 
-    it("should compute the correct dim of 1D tensor", () => {
+    it("should compute the correct dim of 1D(6) tensor", () => {
         expect(new Tensor([1, 2, 3, 4, 5, 6]).ndim).toEqual(1);
     });
 
@@ -97,5 +97,47 @@ describe("Tensor Dimensions", () => {
 
     it("should compute the correct dim of 10D(1x1x1x1x1x1x1x1x1x2) tensor", () => {
         expect(new Tensor([[[[[[[[[[1, 2]]]]]]]]]]).ndim).toEqual(10);
+    });
+});
+
+describe("Tensor Utils: zeros", () => {
+    it("should create a correct 0D tensor", () => {
+        expect(Tensor.zeros([])).toEqual(new Tensor(0));
+    });
+
+    it("should create a correct 1D(6) tensor", () => {
+        expect(Tensor.zeros([6])).toEqual(new Tensor([0, 0, 0, 0, 0, 0]));
+    });
+
+    it("should create a correct 2D(2x3) tensor", () => {
+        expect(Tensor.zeros([2, 3])).toEqual(new Tensor([[0, 0, 0], [0, 0, 0]]));
+    });
+
+    it("should create a correct 3D(2x3x4) tensor", () => {
+        expect(Tensor.zeros([2, 3, 4])).toEqual(new Tensor([
+            [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+            [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        ]));
+    });
+});
+
+describe("Tensor Utils: ones", () => {
+    it("should create a correct 0D tensor", () => {
+        expect(Tensor.ones([])).toEqual(new Tensor(1));
+    });
+
+    it("should create a correct 1D(6) tensor", () => {
+        expect(Tensor.ones([6])).toEqual(new Tensor([1, 1, 1, 1, 1, 1]));
+    });
+
+    it("should create a correct 2D(2x3) tensor", () => {
+        expect(Tensor.ones([2, 3])).toEqual(new Tensor([[1, 1, 1], [1, 1, 1]]));
+    });
+
+    it("should create a correct 3D(2x3x4) tensor", () => {
+        expect(Tensor.ones([2, 3, 4])).toEqual(new Tensor([
+            [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]],
+            [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+        ]));
     });
 });

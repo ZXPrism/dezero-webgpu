@@ -16,12 +16,20 @@ export class Tensor {
         this._shape = shape;
     }
 
-    get shape() {
+    get shape(): number[] {
         return this._shape;
     }
 
-    get ndim() {
+    get ndim(): number {
         return this._shape.length;
+    }
+
+    static zeros(shape: number[]): Tensor {
+        return create_tensor_of_identical_values(shape, 0);
+    }
+
+    static ones(shape: number[]): Tensor {
+        return create_tensor_of_identical_values(shape, 1);
     }
 }
 
@@ -47,4 +55,24 @@ function validate_data(data: NDArray): [boolean, number[]] {
     const [is_valid, shape] = get_shape(data);
     shape.reverse();
     return [is_valid, shape];
+}
+
+function create_tensor_of_identical_values(shape: number[], value: number): Tensor {
+    if (shape.length === 0) {
+        return new Tensor(value);
+    }
+
+    function generate_tensor_data(dim: number): NDArray {
+        if (dim === shape.length) {
+            return value;
+        }
+        const res = [];
+        const next_level = generate_tensor_data(dim + 1);
+        for (let i = 0; i < shape[dim]; i++) {
+            res.push(structuredClone(next_level));
+        }
+        return res;
+    }
+
+    return new Tensor(generate_tensor_data(0));
 }
