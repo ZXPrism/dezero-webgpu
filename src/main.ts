@@ -16,7 +16,6 @@ function display_error(title: string, error: Error | string, stack?: string) {
     error_display.style.display = "block";
 }
 
-
 // Global error handler
 window.addEventListener("error", (event) => {
     display_error(
@@ -26,7 +25,6 @@ window.addEventListener("error", (event) => {
     );
 });
 
-
 // Global promise rejection handler
 window.addEventListener("unhandledrejection", (event) => {
     display_error(
@@ -35,7 +33,6 @@ window.addEventListener("unhandledrejection", (event) => {
         event.reason?.stack
     );
 });
-
 
 // Main initialization
 async function main() {
